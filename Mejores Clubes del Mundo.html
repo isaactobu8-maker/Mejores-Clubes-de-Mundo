@@ -1,0 +1,1147 @@
+
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elite Football - Los Mejores Clubes del Mundo</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        gold: '#eab308',
+                        'gold-light': '#fef08a',
+                        'gold-dark': '#ca8a04',
+                        darkbg: '#0b0f19',
+                        cardbg: '#111827',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- ========================================================================= -->
+    <!-- SECCIÓN: STYLE.CSS                                                        -->
+    <!-- (Puedes copiar todo el contenido dentro de <style> hacia tu style.css)     -->
+    <!-- ========================================================================= -->
+    <style>
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #FFFFFF 0%, #EAB308 50%, #FDE047 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .card-hover {
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(234, 179, 8, 0.15), 0 8px 10px -6px rgba(0, 0, 0, 0.6);
+        }
+        .img-zoom-container {
+            overflow: hidden;
+        }
+        .img-zoom-container img {
+            transition: transform 0.5s ease;
+        }
+        .img-zoom-container:hover img {
+            transform: scale(1.08);
+        }
+        .badge-shadow {
+            filter: drop-shadow(0px 4px 8px rgba(0,0,0,0.6));
+        }
+        /* Custom scrollbar for comments and modals */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0b0f19;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1e293b;
+            border-radius: 9999px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #eab308;
+        }
+    </style>
+</head>
+<body class="bg-[#0b0f19] text-slate-100 font-sans antialiased min-h-screen flex flex-col selection:bg-amber-500 selection:text-slate-950">
+
+    <header class="sticky top-0 z-50 bg-[#0b0f19]/90 backdrop-blur-md border-b border-slate-800/80 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo Portal -->
+                <div class="flex items-center space-x-3 cursor-pointer" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+                    <div class="w-11 h-11 rounded-xl bg-gradient-to-tr from-amber-500 to-yellow-300 flex items-center justify-center shadow-lg shadow-amber-500/20">
+                        <i class="fa-solid font-black text-slate-950 text-xl fa-trophy"></i>
+                    </div>
+                    <div>
+                        <span class="text-xl font-black tracking-wider text-white uppercase">ELITE<span class="text-amber-400">FOOTBALL</span></span>
+                        <span class="block text-[10px] text-slate-400 tracking-widest font-semibold uppercase">Los Mejores Clubes del Mundo</span>
+                    </div>
+                </div>
+
+                <!-- Desktop Menu Nav -->
+                <nav class="hidden lg:flex space-x-7 text-sm font-medium">
+                    <a href="#inicio" class="text-amber-400 hover:text-amber-300 transition-colors flex items-center space-x-1.5">
+                        <i class="fa-solid fa-house text-xs"></i> <span>Inicio</span>
+                    </a>
+                    <a href="#clubes" class="text-slate-300 hover:text-amber-400 transition-colors flex items-center space-x-1.5">
+                        <i class="fa-solid fa-shield-halved text-xs"></i> <span>Clubes</span>
+                    </a>
+                    <a href="#ranking" class="text-slate-300 hover:text-amber-400 transition-colors flex items-center space-x-1.5">
+                        <i class="fa-solid fa-list-ol text-xs"></i> <span>Ranking</span>
+                    </a>
+                    <a href="#galeria" class="text-slate-300 hover:text-amber-400 transition-colors flex items-center space-x-1.5">
+                        <i class="fa-solid fa-image text-xs"></i> <span>Galería</span>
+                    </a>
+                    <a href="#votacion" class="text-slate-300 hover:text-amber-400 transition-colors flex items-center space-x-1.5">
+                        <i class="fa-solid fa-check-to-slot text-xs"></i> <span>Votación</span>
+                    </a>
+                    <a href="#comentarios" class="text-slate-300 hover:text-amber-400 transition-colors flex items-center space-x-1.5">
+                        <i class="fa-solid fa-comments text-xs"></i> <span>Comentarios</span>
+                    </a>
+                </nav>
+
+                <!-- Search Input -->
+                <div class="hidden sm:flex items-center space-x-3">
+                    <div class="relative">
+                        <input type="text" id="global-search" placeholder="Buscar por club, país o liga..." class="bg-slate-900 border border-slate-700/80 text-slate-200 text-sm rounded-full pl-9 pr-4 py-2 focus:outline-none focus:border-amber-400 transition-all w-48 focus:w-64 shadow-inner">
+                        <i class="fa-solid fa-magnifying-glass absolute left-3 top-2.5 text-slate-400 text-sm"></i>
+                    </div>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="lg:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-slate-300 hover:text-white p-2 rounded-lg focus:outline-none">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-slate-900 border-b border-slate-800 px-4 pt-2 pb-4 space-y-2">
+            <a href="#inicio" class="block py-2 text-amber-400 font-medium border-b border-slate-800">Inicio</a>
+            <a href="#clubes" class="block py-2 text-slate-300 hover:text-amber-400 font-medium border-b border-slate-800">Clubes</a>
+            <a href="#ranking" class="block py-2 text-slate-300 hover:text-amber-400 font-medium border-b border-slate-800">Ranking</a>
+            <a href="#galeria" class="block py-2 text-slate-300 hover:text-amber-400 font-medium border-b border-slate-800">Galería de Leyendas</a>
+            <a href="#votacion" class="block py-2 text-slate-300 hover:text-amber-400 font-medium border-b border-slate-800">Votación</a>
+            <a href="#comentarios" class="block py-2 text-slate-300 hover:text-amber-400 font-medium">Comentarios</a>
+        </div>
+    </header>
+
+    <section id="inicio" class="relative py-24 lg:py-36 overflow-hidden flex items-center justify-center">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=2000&q=80" 
+                 alt="Estadio de fútbol iluminado" 
+                 class="w-full h-full object-cover object-center"
+                 onerror="this.src='https://placehold.co/1920x1080/0f172a/f59e0b?text=Estadio+Mundial'">
+            <div class="absolute inset-0 bg-gradient-to-t from-[#0b0f19] via-[#0b0f19]/80 to-[#0b0f19]/60"></div>
+            <div class="absolute inset-0 bg-[#0b0f19]/40 backdrop-blur-[2px]"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <div class="max-w-4xl mx-auto space-y-6">
+                <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-amber-500/15 border border-amber-500/30 text-amber-400 text-xs font-bold uppercase tracking-widest backdrop-blur-md">
+                    <i class="fa-solid fa-star"></i>
+                    <span>Templo de los Grandes Equipos</span>
+                </div>
+                <h1 class="text-4xl sm:text-6xl lg:text-7xl font-black text-white tracking-tight leading-tight drop-shadow-lg">
+                    Los Mejores Clubes <span class="gold-gradient-text block">del Mundo y sus Escudos</span>
+                </h1>
+                <p class="text-slate-300 text-base sm:text-lg leading-relaxed drop-shadow max-w-2xl mx-auto">
+                    Explora la historia, palmarés oficial, alineaciones históricas y los escudos reales de las instituciones futbolísticas más grandiosas de Europa y Sudamérica.
+                </p>
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+                    <a href="#clubes" class="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-gradient-to-r from-amber-500 to-yellow-500 text-slate-950 font-extrabold hover:from-amber-400 hover:to-yellow-400 transition-all shadow-lg shadow-amber-500/25 flex items-center justify-center space-x-2">
+                        <span>Explorar Clubes</span>
+                        <i class="fa-solid fa-arrow-right text-sm"></i>
+                    </a>
+                    <a href="#ranking" class="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-slate-900/90 hover:bg-slate-800 text-white font-semibold transition-all border border-slate-700/80 flex items-center justify-center space-x-2 backdrop-blur-md">
+                        <i class="fa-solid fa-chart-simple text-amber-400"></i>
+                        <span>Ranking Mundial</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Stats Highlight Bar -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-16 max-w-4xl mx-auto">
+                <div class="bg-slate-900/80 border border-slate-800/80 p-4 rounded-2xl text-center backdrop-blur-md shadow-xl">
+                    <p class="text-2xl sm:text-3xl font-black text-amber-400">13 Clubes</p>
+                    <p class="text-xs text-slate-400 font-medium mt-1 uppercase tracking-wider">Leyendas de Europa y América</p>
+                </div>
+                <div class="bg-slate-900/80 border border-slate-800/80 p-4 rounded-2xl text-center backdrop-blur-md shadow-xl">
+                    <p class="text-2xl sm:text-3xl font-black text-amber-400">Escudos HD</p>
+                    <p class="text-xs text-slate-400 font-medium mt-1 uppercase tracking-wider">Logos Oficiales SVG/PNG</p>
+                </div>
+                <div class="bg-slate-900/80 border border-slate-800/80 p-4 rounded-2xl text-center backdrop-blur-md shadow-xl">
+                    <p class="text-2xl sm:text-3xl font-black text-amber-400">100% Interactivo</p>
+                    <p class="text-xs text-slate-400 font-medium mt-1 uppercase tracking-wider">Modales & Encuestas</p>
+                </div>
+                <div class="bg-slate-900/80 border border-slate-800/80 p-4 rounded-2xl text-center backdrop-blur-md shadow-xl">
+                    <p class="text-2xl sm:text-3xl font-black text-amber-400">Comunidad</p>
+                    <p class="text-xs text-slate-400 font-medium mt-1 uppercase tracking-wider">Comentarios en vivo</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="clubes" class="py-20 bg-[#0b0f19]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+                <div>
+                    <span class="text-amber-400 text-xs font-bold uppercase tracking-widest block mb-1">Catálogo Legendario</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+                        Los Clubes <span class="text-amber-400">Más Grandes</span>
+                    </h2>
+                    <p class="text-slate-400 mt-2">Haz clic en cualquier tarjeta para ver su historia, escudo e himno.</p>
+                </div>
+
+                <!-- Filters -->
+                <div class="mt-6 md:mt-0 flex flex-wrap gap-2" id="club-filters">
+                    <button class="filter-btn active px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider bg-amber-500 text-slate-950 transition-all shadow-md" data-filter="all">Todos</button>
+                    <button class="filter-btn px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider bg-slate-900 text-slate-300 hover:bg-slate-800 border border-slate-800 transition-all" data-filter="europa">Europa</button>
+                    <button class="filter-btn px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider bg-slate-900 text-slate-300 hover:bg-slate-800 border border-slate-800 transition-all" data-filter="sudamerica">Sudamérica</button>
+                    <button class="filter-btn px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider bg-slate-900 text-slate-300 hover:bg-slate-800 border border-slate-800 transition-all" data-filter="champions">Champions League</button>
+                </div>
+            </div>
+
+            <!-- Club Grid Cards Container -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="club-cards-container">
+                <!-- Injected dynamically via script -->
+            </div>
+        </div>
+    </section>
+
+    <section id="ranking" class="py-20 bg-slate-900/60 border-y border-slate-800/80 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center mb-10">
+                <div class="lg:col-span-8">
+                    <span class="text-amber-400 text-xs font-bold uppercase tracking-widest block mb-1">Clasificación de Titanes</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Ranking <span class="text-amber-400">Mundial Oficial</span></h2>
+                    <p class="text-slate-400 mt-2">Basado en títulos continentales e internacionales ganados y vigencia deportiva.</p>
+                </div>
+                <div class="lg:col-span-4 rounded-2xl overflow-hidden border border-amber-500/30 relative h-32 hidden lg:block shadow-xl">
+                    <img src="https://images.unsplash.com/photo-1569517282132-25d22f4573e6?auto=format&fit=crop&w=800&q=80" 
+                         alt="Copa Trofeo de Fútbol" 
+                         class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-r from-slate-950/90 to-transparent p-4 flex items-center">
+                        <div>
+                            <p class="text-amber-400 font-black text-lg"><i class="fa-solid fa-crown mr-2"></i>Templo de Campeones</p>
+                            <p class="text-slate-300 text-xs">Puntaje acumulado ponderado</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Table Container -->
+            <div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-2xl">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="bg-slate-800/90 text-amber-400 text-xs uppercase tracking-wider border-b border-slate-700">
+                                <th class="p-4 font-bold text-center">Pos</th>
+                                <th class="p-4 font-bold">Club & Escudo</th>
+                                <th class="p-4 font-bold">País / Liga</th>
+                                <th class="p-4 font-bold text-center">Títulos Inter.</th>
+                                <th class="p-4 font-bold text-center">Ligas Nac.</th>
+                                <th class="p-4 font-bold text-center">Puntaje Elite</th>
+                            </tr>
+                        </thead>
+                        <tbody id="ranking-tbody" class="divide-y divide-slate-800/60 text-sm">
+                            <!-- Injected dynamically via script -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="galeria" class="py-20 bg-[#0b0f19]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <span class="text-amber-400 text-xs font-bold uppercase tracking-widest block mb-1">Catedrales y Magia</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Galería de <span class="text-amber-400">Leyendas y Estadios</span></h2>
+                <p class="text-slate-400 mt-2">Capturas de alto impacto de los recintos e hinchadas más impresionantes.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="gallery-container">
+                <!-- Gallery Card 1 -->
+                <div class="group relative rounded-2xl overflow-hidden border border-slate-800 shadow-xl bg-slate-900 img-zoom-container">
+                    <img src="https://images.unsplash.com/photo-1522778119026-d647f0596c20?auto=format&fit=crop&w=800&q=80" 
+                         alt="Santiago Bernabéu / Estadio" 
+                         class="w-full h-64 object-cover"
+                         onerror="this.src='https://placehold.co/800x600/0f172a/f59e0b?text=Estadio+Bernabeu'">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent opacity-90 group-hover:opacity-100 transition-opacity p-6 flex flex-col justify-end">
+                        <span class="text-amber-400 font-bold text-xs uppercase tracking-wider">Catedrales del Fútbol</span>
+                        <h4 class="text-white font-black text-xl">Estadios Legendarios</h4>
+                        <p class="text-slate-300 text-xs mt-1">Escenarios donde se han disputado las finales más míticas.</p>
+                    </div>
+                </div>
+
+                <!-- Gallery Card 2 -->
+                <div class="group relative rounded-2xl overflow-hidden border border-slate-800 shadow-xl bg-slate-900 img-zoom-container">
+                    <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=800&q=80" 
+                         alt="Champions League Trophy and Pitch" 
+                         class="w-full h-64 object-cover"
+                         onerror="this.src='https://placehold.co/800x600/0f172a/f59e0b?text=Champions+League'">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent opacity-90 group-hover:opacity-100 transition-opacity p-6 flex flex-col justify-end">
+                        <span class="text-amber-400 font-bold text-xs uppercase tracking-wider">Noches Europeas</span>
+                        <h4 class="text-white font-black text-xl">Noche de Champions League</h4>
+                        <p class="text-slate-300 text-xs mt-1">El torneo de clubes de mayor calidad e intensidad.</p>
+                    </div>
+                </div>
+
+                <!-- Gallery Card 3 -->
+                <div class="group relative rounded-2xl overflow-hidden border border-slate-800 shadow-xl bg-slate-900 img-zoom-container">
+                    <img src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=800&q=80" 
+                         alt="Balón de Oro y Partido Épico" 
+                         class="w-full h-64 object-cover"
+                         onerror="this.src='https://placehold.co/800x600/0f172a/f59e0b?text=Pasion+en+la+Cancha'">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent opacity-90 group-hover:opacity-100 transition-opacity p-6 flex flex-col justify-end">
+                        <span class="text-amber-400 font-bold text-xs uppercase tracking-wider">Pasión Incondicional</span>
+                        <h4 class="text-white font-black text-xl">Fiesta en la Tribuna</h4>
+                        <p class="text-slate-300 text-xs mt-1">El fervor incomparablemente colorido en Europa y Sudamérica.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="votacion" class="py-20 bg-slate-900/40 relative">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="relative rounded-3xl overflow-hidden border border-amber-500/30 shadow-2xl bg-slate-900">
+                <div class="absolute inset-0 z-0">
+                    <img src="https://images.unsplash.com/photo-1518091043644-c1d4457512c6?auto=format&fit=crop&w=1600&q=80" 
+                         alt="Estadio repleto" 
+                         class="w-full h-full object-cover opacity-15">
+                    <div class="absolute inset-0 bg-gradient-to-b from-slate-900/90 via-slate-900/95 to-slate-900"></div>
+                </div>
+
+                <div class="relative z-10 p-6 sm:p-12">
+                    <div class="text-center mb-10">
+                        <span class="text-xs font-bold text-amber-400 uppercase tracking-widest bg-amber-500/10 px-4 py-1.5 rounded-full border border-amber-500/30">
+                            <i class="fa-solid fa-vote-yea mr-1"></i> Encuesta Mundial Express
+                        </span>
+                        <h2 class="text-3xl sm:text-4xl font-black text-white mt-4">¿Cuál es el Club más grande de todos los tiempos?</h2>
+                        <p class="text-slate-300 text-sm mt-2 max-w-xl mx-auto">Vota por tu favorito y observa los resultados actualizados en tiempo real.</p>
+                    </div>
+
+                    <!-- Poll Items Container -->
+                    <div id="poll-container" class="space-y-4 max-w-2xl mx-auto">
+                        <!-- Injected dynamically via script -->
+                    </div>
+
+                    <div class="mt-8 text-center text-xs text-slate-400">
+                        <i class="fa-solid fa-shield-halved text-amber-400 mr-1"></i> Tus votos se guardan de forma local e instantánea.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="comentarios" class="py-20 bg-[#0b0f19] border-t border-slate-800/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                <!-- Comment Form -->
+                <div class="lg:col-span-5 bg-slate-900/90 border border-slate-800 rounded-2xl p-6 sm:p-8 h-fit shadow-2xl backdrop-blur-sm">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="w-10 h-10 rounded-xl bg-amber-500/20 border border-amber-500/30 flex items-center justify-center text-amber-400">
+                            <i class="fa-solid fa-pen-to-square text-lg"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-white">Deja tu Comentario</h3>
+                            <p class="text-slate-400 text-xs">Comparte tu pasión e historia sobre tu club.</p>
+                        </div>
+                    </div>
+
+                    <form id="comment-form" class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Nombre / Usuario</label>
+                            <input type="text" id="user-name" required placeholder="Ej. Mateo Hernández" class="w-full bg-[#0b0f19] border border-slate-700/80 rounded-xl px-4 py-3 text-slate-200 text-sm focus:outline-none focus:border-amber-400 transition-colors">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Tu Club Favorito</label>
+                            <select id="user-club" required class="w-full bg-[#0b0f19] border border-slate-700/80 rounded-xl px-4 py-3 text-slate-200 text-sm focus:outline-none focus:border-amber-400 transition-colors">
+                                <option value="">Selecciona tu club...</option>
+                                <option value="Real Madrid C.F.">Real Madrid C.F.</option>
+                                <option value="FC Barcelona">FC Barcelona</option>
+                                <option value="FC Bayern Múnich">FC Bayern Múnich</option>
+                                <option value="Manchester City">Manchester City</option>
+                                <option value="Liverpool FC">Liverpool FC</option>
+                                <option value="Juventus FC">Juventus FC</option>
+                                <option value="Paris Saint-Germain">Paris Saint-Germain</option>
+                                <option value="AC Milan">AC Milan</option>
+                                <option value="Inter de Milán">Inter de Milán</option>
+                                <option value="Arsenal FC">Arsenal FC</option>
+                                <option value="CR Flamengo">CR Flamengo</option>
+                                <option value="C.A. Boca Juniors">C.A. Boca Juniors</option>
+                                <option value="C.A. River Plate">C.A. River Plate</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Valoración del Portal</label>
+                            <div class="flex items-center space-x-2" id="star-rating">
+                                <i class="fa-solid fa-star star-icon text-2xl text-slate-700 cursor-pointer transition-colors" data-value="1"></i>
+                                <i class="fa-solid fa-star star-icon text-2xl text-slate-700 cursor-pointer transition-colors" data-value="2"></i>
+                                <i class="fa-solid fa-star star-icon text-2xl text-slate-700 cursor-pointer transition-colors" data-value="3"></i>
+                                <i class="fa-solid fa-star star-icon text-2xl text-slate-700 cursor-pointer transition-colors" data-value="4"></i>
+                                <i class="fa-solid fa-star star-icon text-2xl text-slate-700 cursor-pointer transition-colors" data-value="5"></i>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Comentario</label>
+                            <textarea id="user-comment" rows="4" required placeholder="¿Por qué consideras que tu club es el más grande del mundo? Comenta una noche inolvidable..." class="w-full bg-[#0b0f19] border border-slate-700/80 rounded-xl px-4 py-3 text-slate-200 text-sm focus:outline-none focus:border-amber-400 transition-colors resize-none"></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-amber-500 to-yellow-500 text-slate-950 font-bold hover:from-amber-400 hover:to-yellow-400 transition-all shadow-lg shadow-amber-500/20 flex items-center justify-center space-x-2">
+                            <i class="fa-solid fa-paper-plane text-sm"></i>
+                            <span>Publicar Comentario</span>
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Comments List Container -->
+                <div class="lg:col-span-7 space-y-4">
+                    <div class="flex items-center justify-between mb-4 border-b border-slate-800 pb-3">
+                        <h3 class="text-2xl font-bold text-white">Comunidad de Hinchas (<span id="comments-count" class="text-amber-400">0</span>)</h3>
+                        <span class="text-xs text-slate-400"><i class="fa-solid fa-arrows-rotate text-amber-400 mr-1"></i> En directo</span>
+                    </div>
+
+                    <div id="comments-list" class="space-y-4 max-h-[640px] overflow-y-auto pr-2">
+                        <!-- Injected dynamically via script -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-[#0b0f19] border-t border-slate-800 text-slate-400 py-12 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div class="md:col-span-2">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-amber-500 to-yellow-300 flex items-center justify-center">
+                            <i class="fa-solid fa-trophy text-slate-950 text-sm"></i>
+                        </div>
+                        <span class="text-lg font-black text-white uppercase tracking-wider">ELITE<span class="text-amber-400">FOOTBALL</span></span>
+                    </div>
+                    <p class="text-sm text-slate-400 max-w-sm leading-relaxed">
+                        El portal definitivo para apasionados del fútbol. Explora escudos oficiales, estadísticas históricas, estadios míticos y rankings mundiales.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="text-sm font-bold text-white uppercase tracking-wider mb-4">Navegación</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#inicio" class="hover:text-amber-400 transition-colors">Inicio</a></li>
+                        <li><a href="#clubes" class="hover:text-amber-400 transition-colors">Clubes y Escudos</a></li>
+                        <li><a href="#ranking" class="hover:text-amber-400 transition-colors">Ranking Oficial</a></li>
+                        <li><a href="#galeria" class="hover:text-amber-400 transition-colors">Galería de Iconos</a></li>
+                        <li><a href="#comentarios" class="hover:text-amber-400 transition-colors">Comentarios</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-sm font-bold text-white uppercase tracking-wider mb-4">Redes Oficiales</h4>
+                    <div class="flex space-x-3">
+                        <a href="#" class="w-9 h-9 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-300 hover:text-amber-400 hover:border-amber-400/50 transition-all"><i class="fa-brands fa-x-twitter"></i></a>
+                        <a href="#" class="w-9 h-9 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-300 hover:text-amber-400 hover:border-amber-400/50 transition-all"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="w-9 h-9 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-300 hover:text-amber-400 hover:border-amber-400/50 transition-all"><i class="fa-brands fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-slate-900 pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500">
+                <p>&copy; 2026 Elite Football Portal. Todos los derechos reservados.</p>
+                <p class="mt-2 sm:mt-0">Escudos oficiales extraídos de Wikimedia Commons.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div id="club-modal" class="fixed inset-0 bg-[#0b0f19]/90 backdrop-blur-md z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-slate-900 border border-slate-800 w-full max-w-3xl rounded-2xl p-6 sm:p-8 relative shadow-2xl overflow-hidden max-h-[90vh] overflow-y-auto">
+            <button id="close-modal" class="absolute top-4 right-4 text-slate-400 hover:text-white bg-slate-800/80 p-2.5 rounded-full z-20 transition-colors">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+            <div id="modal-content">
+                <!-- Dynamic Modal Data Injected Here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification Container -->
+    <div id="toast-container" class="fixed bottom-5 right-5 z-50 space-y-2 pointer-events-none"></div>
+
+    <!-- ========================================================================= -->
+    <!-- SECCIÓN: SCRIPT.JS                                                       -->
+    <!-- (Puedes copiar todo el contenido dentro de <script> hacia tu script.js)  -->
+    <!-- ========================================================================= -->
+    <script>
+        const clubsData = [
+            {
+                id: 'rm',
+                name: 'Real Madrid C.F.',
+                category: 'europa',
+                isChampions: true,
+                country: 'España 🇪🇸',
+                league: 'La Liga',
+                champions: 15,
+                leagues: 36,
+                founded: 1902,
+                stadium: 'Santiago Bernabéu',
+                starPlayer: 'Kylian Mbappé',
+                logo: 'https://upload.wikimedia.org/wikipedia/en/5/56/Real_Madrid_CF.svg',
+                heroImage: 'https://images.unsplash.com/photo-1522778119026-d647f0596c20?auto=format&fit=crop&w=800&q=80',
+                shortDesc: 'El club rey de Europa con 15 UEFA Champions League e historia dorada e incomparable.',
+                fullDesc: 'El Real Madrid Club de Fútbol es considerado el club más prestigioso y laureado de todos los tiempos. Posee el récord absoluto de 15 Copas de Europa, caracterizado por sus épicas remontadas y por reunir a los mejores jugadores de cada era.',
+                motto: '"¡Hala Madrid y nada más!"',
+                historicXI: ['Casillas', 'Carvajal', 'Ramos', 'Hierro', 'Roberto Carlos', 'Modrić', 'Kroos', 'Zidane', 'Cristiano Ronaldo', 'Di Stéfano', 'Benzema']
+            },
+            {
+                id: 'barca',
+                name: 'FC Barcelona',
+                category: 'europa',
+                isChampions: true,
+                country: 'España 🇪🇸',
+                league: 'La Liga',
+                champions: 5,
+                leagues: 27,
+                founded: 1899,
+                stadium: 'Spotify Camp Nou',
+                starPlayer: 'Lamine Yamal',
+                logo: 'https://upload.wikimedia.org/wikipedia/en/4/47/FC_Barcelona_%28crest%29.svg',
+                heroImage: 'https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=800&q=80',
+                shortDesc: 'Emblema del fútbol de posesión, creador del Tiki-Taka y la mítica cantera La Masía.',
+                fullDesc: 'El FC Barcelona es un icono global con su filosofía "Més que un club". Marcó una era irrepetible bajo la batuta de Pep Guardiola y el genio de Lionel Messi, promoviendo el talento joven de La Masía.',
+                motto: '"Més que un club"',
+                historicXI: ['Valdés', 'Dani Alves', 'Puyol', 'Piqué', 'Jordi Alba', 'Busquets', 'Xavi', 'Iniesta', 'Messi', 'Ronaldinho', 'Suárez']
+            },
+            {
+                id: 'bayern',
+                name: 'FC Bayern Múnich',
+                category: 'europa',
+                isChampions: true,
+                country: 'Alemania 🇩🇪',
+                league: 'Bundesliga',
+                champions: 6,
+                leagues: 33,
+                founded: 1900,
+                stadium: 'Allianz Arena',
+                starPlayer: 'Harry Kane',
+                logo: 'https://upload.wikimedia.org/wikipedia/commons/1/1b/FC_Bayern_M%C3%BCnchen_logo_%282017%29.svg',
+                heroImage: 'https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=800&q=80',
+                shortDesc: 'El coloso bávaro, potencia física, táctica y rey indiscutido de la Bundesliga.',
+                fullDesc: 'El FC Bayern Múnich simboliza la máxima disciplina y la mentalidad ganadora germana. Ganador de 6 Champions League y múltiples tripletes continentales.',
+                motto: '"Mia san Mia"',
+                historicXI: ['Neuer', 'Lahm', 'Beckenbauer', 'Schwarzenbeck', 'Alaba', 'Matthäus', 'Schweinsteiger', 'Müller', 'Robben', 'Ribéry', 'Gerd Müller']
+            },
+            {
+                id: 'mcity',
+                name: 'Manchester City',
+                category: 'europa',
+                isChampions: true,
+                country: 'Inglaterra 🏴󠁧󠁢󠁥󠁮󠁧󠁿',
+                league: 'Premier League',
+                champions: 1,
+                leagues: 10,
+                founded: 1880,
+                stadium: 'Etihad Stadium',
+                starPlayer: 'Erling Haaland',
+                logo: 'https://upload.wikimedia.org/wikipedia/en/e/eb/Manchester_City_FC_badge.svg',
+                heroImage: 'https://images.unsplash.com/photo-1518091043644-c1d4457512c6?auto=format&fit=crop&w=800&q=80',
+                shortDesc: 'La fuerza lírica y dominante del fútbol inglés contemporáneo con Pep Guardiola.',
+                fullDesc: 'El Manchester City ha revolucionado la Premier League con un modelo táctico dominante, coronado con el histórico Triplete en 2023.',
+                motto: '"Superbia in Proelio"',
+                historicXI: ['Ederson', 'Zabaleta', 'Kompany', 'Dias', 'Walker', 'Rodri', 'De Bruyne', 'David Silva', 'Yaya Touré', 'Agüero', 'Haaland']
+            },
+            {
+                id: 'liverpool',
+                name: 'Liverpool FC',
+                category: 'europa',
+                isChampions: true,
+                country: 'Inglaterra 🏴󠁧󠁢󠁥󠁮󠁧󠁿',
+                league: 'Premier League',
+                champions: 6,
+                leagues: 19,
+                founded: 1892,
+                stadium: 'Anfield',
+                starPlayer: 'Mohamed Salah',
+                logo: 'https://upload.wikimedia.org/wikipedia/en/0/0c/Liverpool_FC.svg',
+                heroImage: 'https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=800&q=80',
+                shortDesc: 'El club inglés con más tradición en Europa y la mística inigualable de Anfield.',
+                fullDesc: 'Con 6 UEFA Champions League en su vitrina, el Liverpool FC representa la devoción eterna de sus fanáticos cantando su inolvidable himno en The Kop.',
+                motto: '"You\'ll Never Walk Alone"',
+                historicXI: ['Alisson', 'Alexander-Arnold', 'Carragher', 'Van Dijk', 'Robertson', 'Gerrard', 'Xabi Alonso', 'Barnes', 'Salah', 'Dalglish', 'Rush']
+            },
+            {
+                id: 'juventus',
+                name: 'Juventus FC',
+                category: 'europa',
+                isChampions: true,
+                country: 'Italia 🇮🇹',
+                league: 'Serie A',
+                champions: 2,
+                leagues: 36,
+                founded: 1897,
+                stadium: 'Allianz Stadium',
+                starPlayer: 'Dusan Vlahovic',
+                logo: 'https://upload.wikimedia.org/wikipedia/commons/b/bc/Juventus_FC_2017_icon_%28black%29.svg',
+                heroImage: 'https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=800&q=80',
+                shortDesc: 'La "Vecchia Signora" del fútbol italiano y dueña de 36 Scudettos.',
+                fullDesc: 'La Juventus es el club más ganador en la historia de la Serie A italiana, famoso por su solvencia defensiva y por cobijar a grandes figuras históricas como Zidane, Platini y Del Piero.',
+                motto: '"Fino alla fine"',
+                historicXI: ['Buffon', 'Lichtsteiner', 'Chiellini', 'Bonucci', 'Cabrini', 'Pirlo', 'Tardelli', 'Zidane', 'Platini', 'Del Piero', 'Trezegeut']
+            },
+            {
+                id: 'psg',
+                name: 'Paris Saint-Germain',
+                category: 'europa',
+                isChampions: false,
+                country: 'Francia 🇫🇷',
+                league: 'Ligue 1',
+                champions: 0,
+                leagues: 12,
+                founded: 1970,
+                stadium: 'Parc des Princes',
+                starPlayer: 'Ousmane Dembélé',
+                logo: 'https://upload.wikimedia.org/wikipedia/en/a/a7/Paris_Saint-Germain_F.C..svg',
+                heroImage: 'https://images.unsplash.com/photo-1522778119026-d647f0596c20?auto=format&fit=crop&w=800&q=80',
+                shortDesc: 'El gigante de la capital francesa y dominador de la Ligue 1.',
+                fullDesc: 'El Paris Saint-Germain representa el glamur y la ambición del fútbol moderno galo, acaparando títulos locales con las mejores estrellas internacionales.',
+                motto: '"Paris est magique"',
+                historicXI: ['Sirigu', 'Marquinhos', 'Thiago Silva', 'Kimpenbe', 'Maxwell', 'Verratti', 'Matuidi', 'Pastore', 'Di María', 'Ibrahimović', 'Mbappé']
+            },
+            {
+                id: 'acmilan',
+                name: 'AC Milan',
+                category: 'europa',
+                isChampions: true,
+                country: 'Italia 🇮🇹',
+                league: 'Serie A',
+                champions: 7,
+                leagues: 19,
+                founded: 1899,
+                stadium: 'San Siro',
+                starPlayer: 'Rafael Leão',
+                logo: 'https://upload.wikimedia.org/wikipedia/commons/d/d0/AC_Milan_logo.svg',
+                heroImage: 'https://images.unsplash.com/photo-1569517282132-25d22f4573e6?auto=format&fit=crop&w=800&q=80',
+                shortDesc: 'Segundo club con más Champions League (7) de la historia.',
+                fullDesc: 'El Associazione Calcio Milan es uno de los titanes europeos por excelencia. Dominó épocas brillantes con Arrigo Sacchi y Carlo Ancelotti.',
+                motto: '"Rossoneri per sempre"',
+                historicXI: ['Dida', 'Tassotti', 'Baresi', 'Maldini', 'Nesta', 'Rijkaard', 'Gattuso', 'Pirlo', 'Kaká', 'Gullit', 'Van Basten']
+            },
+            {
+                id: 'inter',
+                name: 'Inter de Milán',
+                category: 'europa',
+                isChampions: true,
+                country: 'Italia 🇮🇹',
+                league: 'Serie A',
+                champions: 3,
+                leagues: 20,
+                founded: 1908,
+                stadium: 'Giuseppe Meazza',
+                starPlayer: 'Lautaro Martínez',
+                logo: 'https://upload.wikimedia.org/wikipedia/commons/0/05/FC_Internazionale_Milano_2021.svg',
+                heroImage: 'https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=800&q=80',
+                shortDesc: 'El único club italiano en haber conquistado un Triplete Continental.',
+                fullDesc: 'El Football Club Internazionale Milano ostenta 3 Copas de Europa y una tradición caracterizada por el carácter competitivo de la escuadra "Nerazzurra".',
+                motto: '"Fratelli del mondo"',
+                historicXI: ['Júlio César', 'Zanetti', 'Lúcio', 'Samuel', 'Chivu', 'Cambiasso', 'Sneijder', 'Stanković', 'Eto\'o', 'Milito', 'Ronaldo Nazário']
+            },
+            {
+                id: 'arsenal',
+                name: 'Arsenal FC',
+                category: 'europa',
+                isChampions: false,
+                country: 'Inglaterra 🏴󠁧󠁢󠁥󠁮󠁧󠁿',
+                league: 'Premier League',
+                champions: 0,
+                leagues: 13,
+                founded: 1886,
+                stadium: 'Emirates Stadium',
+                starPlayer: 'Bukayo Saka',
+                logo: 'https://upload.wikimedia.org/wikipedia/en/5/53/Arsenal_FC.svg',
+                heroImage: 'https://images.unsplash.com/photo-1518091043644-c1d4457512c6?auto=format&fit=crop&w=800&q=80',
+                shortDesc: 'Famoso por su temporada invicta histórica "The Invincibles".',
+                fullDesc: 'El Arsenal FC de Londres deslumbró al mundo entero bajo la batuta de Arsène Wenger, logrando el récord inmortal de ganar una Premier League sin perder un solo encuentro.',
+                motto: '"Victoria Concordia Crescit"',
+                historicXI: ['Seaman', 'Lauren', 'Adams', 'Campbell', 'Cole', 'Vieira', 'Gilberto Silva', 'Pires', 'Ljungberg', 'Bergkamp', 'Thierry Henry']
+            },
+            {
+                id: 'flamengo',
+                name: 'CR Flamengo',
+                category: 'sudamerica',
+                isChampions: false,
+                country: 'Brasil 🇧🇷',
+                league: 'Brasileirão',
+                champions: 3,
+                leagues: 8,
+                founded: 1895,
+                stadium: 'Maracanã',
+                starPlayer: 'De Arrascaeta',
+                logo: 'https://upload.wikimedia.org/wikipedia/commons/2/2e/Flamengo_braz_logo.svg',
+                heroImage: 'https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=800&q=80',
+                shortDesc: 'La torcida más numerosa del mundo y gigante tricampeón de América.',
+                fullDesc: 'El Clube de Regatas do Flamengo es el club con mayor hinchada del planeta (más de 40 millones). Leyenda de la Copa Libertadores y poseedor de la magia de Zico.',
+                motto: '"Mengaõ do meu coração"',
+                historicXI: ['Diego Alves', 'Rafinha', 'Pablo Marí', 'Rodrigo Caio', 'Filipe Luís', 'Gerson', 'Arão', 'De Arrascaeta', 'Everton Ribeiro', 'Zico', 'Gabigol']
+            },
+            {
+                id: 'boca',
+                name: 'C.A. Boca Juniors',
+                category: 'sudamerica',
+                isChampions: false,
+                country: 'Argentina 🇦🇷',
+                league: 'Liga Profesional',
+                champions: 6,
+                leagues: 35,
+                founded: 1905,
+                stadium: 'La Bombonera',
+                starPlayer: 'Edinson Cavani',
+                logo: 'https://upload.wikimedia.org/wikipedia/commons/1/12/Escudo_del_Club_Atl%C3%A9tico_Boca_Juniors.svg',
+                heroImage: 'https://images.unsplash.com/photo-1569517282132-25d22f4573e6?auto=format&fit=crop&w=800&q=80',
+                shortDesc: 'Emblema del fútbol sudamericano, 6 Libertadores y mística en La Bombonera.',
+                fullDesc: 'Boca Juniors es un mito del balompié mundial. Ha conquistado 6 Copas Libertadores y 3 Copas Intercontinentales (venciendo al Real Madrid y AC Milan).',
+                motto: '"Boca es la mitad más uno"',
+                historicXI: ['Córdoba', 'Ibarra', 'Bermúdez', 'Samuel', 'Arruabarrena', 'Serna', 'Battaglia', 'Riquelme', 'Maradona', 'Palermo', 'Tevez']
+            },
+            {
+                id: 'river',
+                name: 'C.A. River Plate',
+                category: 'sudamerica',
+                isChampions: false,
+                country: 'Argentina 🇦🇷',
+                league: 'Liga Profesional',
+                champions: 4,
+                leagues: 38,
+                founded: 1901,
+                stadium: 'MÂS Monumental',
+                starPlayer: 'Franco Armani',
+                logo: 'https://upload.wikimedia.org/wikipedia/commons/a/ac/Escudo_del_C_A_River_Plate.svg',
+                heroImage: 'https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=800&q=80',
+                shortDesc: '"El Millonario", club más ganador de ligas en Argentina y 4 Libertadores.',
+                fullDesc: 'River Plate es famoso mundialmente por su paladar negro, su cantera histórica que proveyó estrellas a todo el mundo y la icónica era de Marcelo Gallardo.',
+                motto: '"El más grande lejos"',
+                historicXI: ['Armani', 'Montiel', 'Maidana', 'Passarella', 'Sorín', 'Ponzio', 'Enzo Francescoli', 'Ortega', 'Aimar', 'Alario', 'Pardy']
+            }
+        ];
+
+        let pollData = JSON.parse(localStorage.getItem('elite_poll_data')) || {
+            'rm': { name: 'Real Madrid', logo: 'https://upload.wikimedia.org/wikipedia/en/5/56/Real_Madrid_CF.svg', votes: 620 },
+            'barca': { name: 'FC Barcelona', logo: 'https://upload.wikimedia.org/wikipedia/en/4/47/FC_Barcelona_%28crest%29.svg', votes: 480 },
+            'bayern': { name: 'Bayern Múnich', logo: 'https://upload.wikimedia.org/wikipedia/commons/1/1b/FC_Bayern_M%C3%BCnchen_logo_%282017%29.svg', votes: 290 },
+            'mcity': { name: 'Manchester City', logo: 'https://upload.wikimedia.org/wikipedia/en/e/eb/Manchester_City_FC_badge.svg', votes: 240 },
+            'boca': { name: 'Boca Juniors', logo: 'https://upload.wikimedia.org/wikipedia/commons/1/12/Escudo_del_Club_Atl%C3%A9tico_Boca_Juniors.svg', votes: 380 },
+            'flamengo': { name: 'Flamengo', logo: 'https://upload.wikimedia.org/wikipedia/commons/2/2e/Flamengo_braz_logo.svg', votes: 310 }
+        };
+
+        let currentRating = 0;
+
+        const defaultComments = [
+            {
+                id: 1,
+                name: 'Carlos Mendoza',
+                club: 'Real Madrid C.F.',
+                rating: 5,
+                avatar: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=150&q=80',
+                comment: 'Las 15 Champions demuestran que el Real Madrid no juega finales, las gana. El escudo más respetado del deporte.',
+                likes: 34,
+                date: 'Hace 2 horas'
+            },
+            {
+                id: 2,
+                name: 'Valentina Rossi',
+                club: 'AC Milan',
+                rating: 5,
+                avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&q=80',
+                comment: 'El Milan de Maldini y Baresi es inolvidable. ¡Tener 7 Champions siendo un club italiano habla por sí solo!',
+                likes: 21,
+                date: 'Hace 4 horas'
+            },
+            {
+                id: 3,
+                name: 'Mateo Silva',
+                club: 'C.A. Boca Juniors',
+                rating: 5,
+                avatar: 'https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?auto=format&fit=crop&w=150&q=80',
+                comment: 'Haber ganado 3 Intercontinentales le demuestra al planeta entero el poder del fútbol de América del Sur. ¡Aguante Boca!',
+                likes: 29,
+                date: 'Hace 6 horas'
+            }
+        ];
+
+        function showNotification(msg) {
+            const toastContainer = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            toast.className = 'bg-amber-500 text-slate-950 font-bold px-4 py-3 rounded-xl shadow-2xl transition-all duration-300 transform translate-y-4 opacity-0 flex items-center space-x-2 pointer-events-auto';
+            toast.innerHTML = `<i class="fa-solid fa-circle-info"></i><span>${msg}</span>`;
+            
+            toastContainer.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.classList.remove('translate-y-4', 'opacity-0');
+            }, 10);
+
+            setTimeout(() => {
+                toast.classList.add('opacity-0', 'translate-y-4');
+                setTimeout(() => toast.remove(), 300);
+            }, 3000);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderClubCards(clubsData);
+            renderRankingTable();
+            renderPoll();
+            initComments();
+            setupEventListeners();
+        });
+
+        function renderClubCards(clubs) {
+            const container = document.getElementById('club-cards-container');
+            container.innerHTML = '';
+
+            if (clubs.length === 0) {
+                container.innerHTML = `
+                    <div class="col-span-full text-center py-12 text-slate-400">
+                        <i class="fa-solid fa-circle-exclamation text-3xl text-amber-400 mb-2"></i>
+                        <p class="text-base font-semibold">No se encontraron clubes para esta búsqueda.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            clubs.forEach(club => {
+                const card = document.createElement('div');
+                card.className = 'bg-slate-900 border border-slate-800/90 rounded-2xl overflow-hidden flex flex-col justify-between card-hover shadow-xl relative cursor-pointer';
+                card.onclick = () => openClubModal(club.id);
+
+                card.innerHTML = `
+                    <div class="relative h-48 img-zoom-container bg-slate-950">
+                        <img src="${club.heroImage}" alt="${club.name}" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/800x600/0f172a/f59e0b?text=${encodeURIComponent(club.name)}'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent"></div>
+                        
+                        <span class="absolute top-3 left-3 text-xs font-semibold px-3 py-1 bg-slate-950/80 border border-slate-700/80 rounded-full text-slate-200 backdrop-blur-md">
+                            ${club.country}
+                        </span>
+
+                        <div class="absolute bottom-2 right-4 w-16 h-16 rounded-2xl bg-slate-950/90 border border-amber-500/30 p-2.5 flex items-center justify-center shadow-2xl backdrop-blur-md badge-shadow">
+                            <img src="${club.logo}" alt="Escudo ${club.name}" class="w-full h-full object-contain" onerror="this.src='https://placehold.co/100x100/1e293b/f59e0b?text=Escudo'">
+                        </div>
+                    </div>
+
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-2">
+                                <h3 class="text-2xl font-black text-white">${club.name}</h3>
+                            </div>
+                            <p class="text-slate-400 text-sm mb-6 leading-relaxed">${club.shortDesc}</p>
+
+                            <div class="grid grid-cols-2 gap-3 mb-6 bg-slate-950/80 p-3 rounded-xl border border-slate-800">
+                                <div>
+                                    <span class="text-[10px] text-slate-500 uppercase tracking-wider block font-bold">Torneos Cont.</span>
+                                    <span class="text-lg font-black text-amber-400">${club.champions} <i class="fa-solid fa-trophy text-xs ml-1"></i></span>
+                                </div>
+                                <div>
+                                    <span class="text-[10px] text-slate-500 uppercase tracking-wider block font-bold">Estrella</span>
+                                    <span class="text-xs font-bold text-slate-200 truncate block mt-1">${club.starPlayer}</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button class="w-full py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-amber-400 font-semibold text-xs tracking-wider uppercase transition-colors flex items-center justify-center space-x-2 border border-slate-700/80">
+                            <span>Ver Historia y Escudo</span>
+                            <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                        </button>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function renderRankingTable() {
+            const tbody = document.getElementById('ranking-tbody');
+            const sorted = [...clubsData].sort((a, b) => (b.champions * 35 + b.leagues * 8) - (a.champions * 35 + a.leagues * 8));
+
+            tbody.innerHTML = sorted.map((club, index) => {
+                const points = (club.champions * 35) + (club.leagues * 8);
+                return `
+                    <tr class="hover:bg-slate-800/50 transition-colors cursor-pointer" onclick="openClubModal('${club.id}')">
+                        <td class="p-4 font-black text-center ${index === 0 ? 'text-amber-400 text-base' : 'text-slate-400'}">#${index + 1}</td>
+                        <td class="p-4 font-bold text-white flex items-center space-x-3">
+                            <div class="w-9 h-9 rounded-lg bg-slate-950 border border-slate-700/80 p-1 flex items-center justify-center shrink-0">
+                                <img src="${club.logo}" alt="${club.name}" class="w-full h-full object-contain">
+                            </div>
+                            <span class="hover:text-amber-400 transition-colors">${club.name}</span>
+                        </td>
+                        <td class="p-4 text-slate-400 text-xs">${club.country}</td>
+                        <td class="p-4 text-center font-bold text-amber-400">${club.champions}</td>
+                        <td class="p-4 text-center font-semibold text-slate-300">${club.leagues}</td>
+                        <td class="p-4 text-center font-black text-slate-100">${points} pts</td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        function renderPoll() {
+            const container = document.getElementById('poll-container');
+            const totalVotes = Object.values(pollData).reduce((sum, item) => sum + item.votes, 0);
+
+            container.innerHTML = Object.keys(pollData).map(key => {
+                const item = pollData[key];
+                const percentage = Math.round((item.votes / totalVotes) * 100) || 0;
+
+                return `
+                    <div class="bg-slate-950/90 border border-slate-800 rounded-2xl p-4 cursor-pointer hover:border-amber-400/60 transition-all shadow-md group" onclick="vote('${key}')">
+                        <div class="flex items-center justify-between mb-2">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-8 h-8 rounded-lg bg-slate-900 p-1 border border-slate-700/80 flex items-center justify-center">
+                                    <img src="${item.logo}" alt="${item.name}" class="w-full h-full object-contain">
+                                </div>
+                                <span class="font-bold text-white text-sm group-hover:text-amber-400 transition-colors">${item.name}</span>
+                            </div>
+                            <span class="text-xs font-bold text-amber-400">${percentage}% (${item.votes} votos)</span>
+                        </div>
+                        <div class="w-full bg-slate-900 rounded-full h-3 overflow-hidden border border-slate-800">
+                            <div class="bg-gradient-to-r from-amber-500 to-yellow-400 h-3 rounded-full transition-all duration-500" style="width: ${percentage}%"></div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function vote(key) {
+            pollData[key].votes += 1;
+            localStorage.setItem('elite_poll_data', JSON.stringify(pollData));
+            renderPoll();
+            showNotification(`¡Voto registrado para ${pollData[key].name}!`);
+        }
+
+        function initComments() {
+            const savedComments = JSON.parse(localStorage.getItem('elite_football_comments_v3')) || defaultComments;
+            renderComments(savedComments);
+
+            const stars = document.querySelectorAll('#star-rating .star-icon');
+            stars.forEach(star => {
+                star.addEventListener('click', (e) => {
+                    currentRating = parseInt(e.target.getAttribute('data-value'));
+                    updateStarUI(currentRating);
+                });
+            });
+
+            document.getElementById('comment-form').addEventListener('submit', (e) => {
+                e.preventDefault();
+                const name = document.getElementById('user-name').value;
+                const club = document.getElementById('user-club').value;
+                const commentText = document.getElementById('user-comment').value;
+
+                if (currentRating === 0) {
+                    showNotification('Por favor selecciona una valoración en estrellas.');
+                    return;
+                }
+
+                const newComment = {
+                    id: Date.now(),
+                    name,
+                    club,
+                    rating: currentRating,
+                    avatar: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=150&q=80',
+                    comment: commentText,
+                    likes: 0,
+                    date: 'Hace un instante'
+                };
+
+                const currentList = JSON.parse(localStorage.getItem('elite_football_comments_v3')) || defaultComments;
+                currentList.unshift(newComment);
+                localStorage.setItem('elite_football_comments_v3', JSON.stringify(currentList));
+
+                renderComments(currentList);
+
+                document.getElementById('comment-form').reset();
+                currentRating = 0;
+                updateStarUI(0);
+                showNotification('¡Tu comentario se ha publicado con éxito!');
+            });
+        }
+
+        function updateStarUI(rating) {
+            const stars = document.querySelectorAll('#star-rating .star-icon');
+            stars.forEach((star, index) => {
+                if (index < rating) {
+                    star.classList.remove('text-slate-700');
+                    star.classList.add('text-amber-400');
+                } else {
+                    star.classList.remove('text-amber-400');
+                    star.classList.add('text-slate-700');
+                }
+            });
+        }
+
+        function renderComments(comments) {
+            const listContainer = document.getElementById('comments-list');
+            document.getElementById('comments-count').textContent = comments.length;
+
+            listContainer.innerHTML = comments.map(c => `
+                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 space-y-3 shadow-lg">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-3">
+                            <img src="${c.avatar}" alt="${c.name}" class="w-10 h-10 rounded-full object-cover border border-amber-500/30">
+                            <div>
+                                <h4 class="font-bold text-white text-sm">${c.name}</h4>
+                                <span class="text-xs text-amber-400 font-medium">${c.club}</span>
+                            </div>
+                        </div>
+                        <span class="text-xs text-slate-500">${c.date}</span>
+                    </div>
+
+                    <div class="flex text-amber-400 text-xs">
+                        ${Array.from({length: 5}).map((_, i) => `<i class="fa-solid fa-star ${i < c.rating ? 'text-amber-400' : 'text-slate-800'}"></i>`).join('')}
+                    </div>
+
+                    <p class="text-slate-300 text-sm leading-relaxed">${c.comment}</p>
+
+                    <div class="pt-2 flex items-center justify-end">
+                        <button onclick="likeComment(${c.id})" class="text-xs text-slate-400 hover:text-amber-400 transition-colors flex items-center space-x-1.5 bg-slate-950 px-3 py-1.5 rounded-lg border border-slate-800">
+                            <i class="fa-solid fa-thumbs-up text-xs"></i>
+                            <span>${c.likes} Me gusta</span>
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function likeComment(id) {
+            let comments = JSON.parse(localStorage.getItem('elite_football_comments_v3')) || defaultComments;
+            comments = comments.map(c => {
+                if (c.id === id) {
+                    return { ...c, likes: c.likes + 1 };
+                }
+                return c;
+            });
+            localStorage.setItem('elite_football_comments_v3', JSON.stringify(comments));
+            renderComments(comments);
+        }
+
+        function setupEventListeners() {
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    filterBtns.forEach(b => {
+                        b.classList.remove('bg-amber-500', 'text-slate-950', 'active');
+                        b.classList.add('bg-slate-900', 'text-slate-300');
+                    });
+                    btn.classList.remove('bg-slate-900', 'text-slate-300');
+                    btn.classList.add('bg-amber-500', 'text-slate-950', 'active');
+
+                    const filter = btn.getAttribute('data-filter');
+                    if (filter === 'all') {
+                        renderClubCards(clubsData);
+                    } else if (filter === 'champions') {
+                        renderClubCards(clubsData.filter(c => c.isChampions));
+                    } else {
+                        renderClubCards(clubsData.filter(c => c.category === filter));
+                    }
+                });
+            });
+
+            document.getElementById('global-search').addEventListener('input', (e) => {
+                const query = e.target.value.toLowerCase();
+                const filtered = clubsData.filter(c => 
+                    c.name.toLowerCase().includes(query) || 
+                    c.country.toLowerCase().includes(query) ||
+                    c.league.toLowerCase().includes(query) ||
+                    c.starPlayer.toLowerCase().includes(query)
+                );
+                renderClubCards(filtered);
+            });
+
+            document.getElementById('close-modal').addEventListener('click', () => {
+                document.getElementById('club-modal').classList.add('hidden');
+            });
+
+            document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+                document.getElementById('mobile-menu').classList.toggle('hidden');
+            });
+        }
+
+        function openClubModal(id) {
+            const club = clubsData.find(c => c.id === id);
+            if (!club) return;
+
+            const modalContent = document.getElementById('modal-content');
+            modalContent.innerHTML = `
+                <div class="relative h-52 rounded-2xl overflow-hidden mb-6 border border-slate-800 bg-slate-950">
+                    <img src="${club.heroImage}" alt="${club.name}" class="w-full h-full object-cover opacity-60">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent"></div>
+                    
+                    <div class="absolute bottom-4 left-4 flex items-center space-x-4">
+                        <div class="w-20 h-20 rounded-2xl bg-slate-950 border border-amber-500/40 p-3 flex items-center justify-center shadow-2xl backdrop-blur-md">
+                            <img src="${club.logo}" alt="Escudo de ${club.name}" class="w-full h-full object-contain">
+                        </div>
+                        <div>
+                            <h3 class="text-3xl font-black text-white">${club.name}</h3>
+                            <p class="text-xs text-amber-400 font-bold mt-1">${club.country} • ${club.league}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-6 p-3 rounded-xl bg-amber-500/10 border border-amber-500/30 text-amber-300 text-center text-xs font-bold italic">
+                    ${club.motto}
+                </div>
+
+                <p class="text-slate-300 text-sm leading-relaxed mb-6">${club.fullDesc}</p>
+
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6">
+                    <div class="bg-slate-950 p-3 rounded-xl border border-slate-800">
+                        <span class="text-[10px] text-slate-500 uppercase font-bold block">Fundación</span>
+                        <span class="text-sm font-bold text-white">${club.founded}</span>
+                    </div>
+                    <div class="bg-slate-950 p-3 rounded-xl border border-slate-800">
+                        <span class="text-[10px] text-slate-500 uppercase font-bold block">Estadio</span>
+                        <span class="text-xs font-bold text-white truncate block mt-0.5">${club.stadium}</span>
+                    </div>
+                    <div class="bg-slate-950 p-3 rounded-xl border border-slate-800">
+                        <span class="text-[10px] text-slate-500 uppercase font-bold block">Títulos Contin.</span>
+                        <span class="text-sm font-bold text-amber-400">${club.champions}</span>
+                    </div>
+                    <div class="bg-slate-950 p-3 rounded-xl border border-slate-800">
+                        <span class="text-[10px] text-slate-500 uppercase font-bold block">Ligas Nac.</span>
+                        <span class="text-sm font-bold text-slate-200">${club.leagues}</span>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-3 flex items-center">
+                        <i class="fa-solid fa-users text-amber-400 mr-2"></i> Once Histórico de Leyendas
+                    </h4>
+                    <div class="flex flex-wrap gap-2">
+                        ${club.historicXI.map(player => `
+                            <span class="px-3 py-1 rounded-lg bg-slate-950 border border-slate-800 text-xs font-medium text-slate-200 flex items-center space-x-1.5">
+                                <i class="fa-solid fa-shirt text-[10px] text-amber-400"></i>
+                                <span>${player}</span>
+                            </span>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('club-modal').classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
